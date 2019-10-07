@@ -1,0 +1,63 @@
+<mat-toolbar class="header">
+  <span class="logo-wrapper">
+    <img src="/assets/images/logo.png" alt="">
+    <span>
+      Material UI Builder
+    </span>
+  </span>
+  <span class="example-fill-remaining-space"></span>
+  <span style="display: flex;align-items: center">
+    <mat-slide-toggle [(ngModel)]=messageMode style="margin-right: 40px">
+      <span style="font-size: 16px">
+        {{messageMode ? '消息':'模态弹层'}}
+      </span>
+    </mat-slide-toggle>
+     <button mat-button (click)="copyBlocks()">拷贝</button>
+     <button mat-button (click)="clear()" color="warn">清空</button>
+  </span>
+</mat-toolbar>
+<div style="display: flex;flex-direction: row;flex-shrink: 0">
+  <div class="sidebar">
+    <br>
+    <div class="p-block_kit_builder_tray__title">块级UI</div>
+    <div (click)="addBlockUI(blockUI)" *ngFor="let blockUI of blockUIList" data-qa="section"
+         class="p-block_kit_builder__sidebar_block">
+      <div class="p-block_kit_builder_block_image p-block_kit_builder_block_image--section"></div>
+      <div class="p-block_kit_builder_block__title">
+        <p class="p-block_kit_builder_block__title_text">{{blockUI}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="message-item">
+      <div class="user-avatar" *ngIf="messageMode">
+        <img class="c-avatar__image" src="https://ca.slack-edge.com/T6AB90804-UL362L99C-gc935f7f526a-48"
+             srcset="https://ca.slack-edge.com/T6AB90804-UL362L99C-gc935f7f526a-72 2x" alt="">
+      </div>
+      <div  class="message-content">
+        <div *ngIf="messageMode" class="message-content-header">
+          <span class="message-sender">枢机处</span>
+          <span class="message-badge">应用</span>
+          <span class="message-c-time">10:44</span>
+        </div>
+        <div *ngIf="messageMode" class="message-content-body">
+          快来试试书枢机处，帮助你快速处理来自各个业务系统的事情
+        </div>
+        <app-message-blocks [editable]="true" (blockChange)="blockChange($event)"
+                            [blocks]="blockData?.blocks"></app-message-blocks>
+      </div>
+    </div>
+  </div>
+  <div class="editor">
+    <app-rich-editor [(ngModel)]="blockData"></app-rich-editor>
+  </div>
+</div>
+<mat-toolbar color="primary">
+  <span>
+    <button (click)="goToChooseTemplate()" mat-button>基于模板快速创建</button>
+  </span>
+  <span class="example-fill-remaining-space"></span>
+  <span *ngIf="!messageMode" style="display: flex;align-items: center">
+     <button mat-raised-button (click)="openModal()">打开模态弹层</button>
+  </span>
+</mat-toolbar>

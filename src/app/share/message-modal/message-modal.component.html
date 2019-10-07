@@ -1,0 +1,15 @@
+<h1 mat-dialog-title cdkFocusInitial >
+  <span>
+  {{modalData?.title?.text}}
+  </span>
+  <button [mat-dialog-close]="{}" mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</h1>
+<div mat-dialog-content>
+  <app-message-blocks [editable]="false" [blocks]="modalData?.blocks"></app-message-blocks>
+</div>
+<div mat-dialog-actions>
+  <button [mat-dialog-close]="{}" mat-button>{{modalData?.submit?.text}}</button>
+  <button [mat-dialog-close]="{}" mat-button color="warn">{{modalData?.close?.text}}</button>
+</div>

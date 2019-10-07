@@ -1,0 +1,21 @@
+<h1 mat-dialog-title cdkFocusInitial style="display: flex;flex-direction: row-reverse">
+  <button [mat-dialog-close]="false" mat-icon-button>
+    <mat-icon>close</mat-icon>
+  </button>
+</h1>
+<div style="display: flex;align-items: center;flex-direction: column" mat-dialog-content>
+  <div  *ngFor="let template of templates">
+    <h2>{{template?.label}}</h2>
+    <div class="template-box">
+      <app-message-blocks [editable]="false" [blocks]="template?.blocks"></app-message-blocks>
+    </div>
+    <button (click)="useTemplate(template)" style="margin-top: 8px" mat-raised-button color="primary">使用模板</button>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button>{{modalData?.submit?.text}}</button>
+  <button mat-button color="warn">{{modalData?.close?.text}}</button>
+</div>

@@ -1,0 +1,157 @@
+<div cdkDropList (cdkDropListDropped)="onDrop($event)">
+  <div [ngStyle]="{'cursor':editable ? 'move':'auto'}" [cdkDragDisabled]="!editable" cdkDrag
+       *ngFor="let block of blocks" class="message-block-wrapper">
+    <ng-container *ngIf="block?.type === 'section'">
+
+      <div class="message-section-block">
+        <div *ngIf="block?.accessory" class="message-section-block-accessory">
+          <button *ngIf="block.accessory?.type === 'button'" [value]="block.accessory?.value" mat-raised-button
+                  [color]="block.accessory?.style">
+            <ng-template [ngTemplateOutlet]="textRender"
+                         [ngTemplateOutletContext]="{ $implicit: block.accessory?.text}"></ng-template>
+          </button>
+          <div *ngIf="block.accessory?.type === 'image'" class="message-section-block-accessory-image"
+               [ngStyle]="{'background-image':'url('+block.accessory?.imageUrl+')'}">
+          </div>
+          <ng-container
+            *ngIf="block.accessory?.type === 'staticSelect' || block.accessory?.type === 'multiStaticSelect'">
+            <mat-form-field>
+              <mat-select [multiple]="block.accessory?.type === 'multiStaticSelect'"
+                          [placeholder]="block.accessory?.placeholder ? block.accessory.placeholder?.text : ''">
+                <mat-option *ngFor="let option of block.accessory?.options" [value]="option?.value">
+                  {{option?.text ? option?.text?.text : ''}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </ng-container>
+          <ng-container *ngIf="block.accessory?.type === 'overflow'">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button *ngFor="let option of block.accessory?.options" mat-menu-item>
+                {{option?.text ? option?.text?.text : ''}}
+              </button>
+            </mat-menu>
+          </ng-container>
+          <ng-container *ngIf="block.accessory?.type === 'datePicker'">
+            <mat-form-field>
+              <input [value]="block.accessory.initialDate" matInput [matDatepicker]="picker"
+                     [placeholder]="block.accessory?.placeholder ? block.accessory.placeholder?.text : ''">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </ng-container>
+        </div>
+        <div class="message-section-block-text-content">
+          <div class="message-section-block-text">
+            <ng-template [ngTemplateOutlet]="textRender"
+                         [ngTemplateOutletContext]="{ $implicit: block?.text}"></ng-template>
+
+            <div *ngIf="block?.fields && block?.fields.length >0" class="message-section-block-fields">
+              <div *ngFor="let field of block.fields" class="message-section-block-field">
+                <ng-template [ngTemplateOutlet]="textRender"
+                             [ngTemplateOutletContext]="{ $implicit: field}"></ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="block?.type === 'actions' && block?.elements && block?.elements?.length >0">
+      <div class="message-actions-block">
+        <div class="message-actions-block-elements">
+          <div *ngFor="let action of block.elements" class="message-action-block-element">
+            <button [value]="action?.value" *ngIf="action?.type === 'button'" mat-raised-button [color]="action?.style">
+              <ng-template [ngTemplateOutlet]="textRender"
+                           [ngTemplateOutletContext]="{ $implicit: action?.text}"></ng-template>
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="block?.type === 'image'">
+      <div class="message-image-block">
+        <div class="message-image-block-container">
+          <div class="message-image-block-title">
+            <ng-template [ngTemplateOutlet]="textRender"
+                         [ngTemplateOutletContext]="{ $implicit: block?.title}"></ng-template>
+            <span class="message-image-block-trigger">
+            <mat-icon *ngIf="!block?.$hidden" (click)="toggleImage(block,true)" color="primary" style="font-size: 18px">arrow_drop_down</mat-icon>
+            <mat-icon *ngIf="block?.$hidden" (click)="toggleImage(block,false)" color="primary" style="font-size: 18px">arrow_drop_up</mat-icon>
+          </span>
+          </div>
+          <div *ngIf="!block?.$hidden" class="message-image-block-body">
+            <div class="message-image-block-outer">
+              <div class="message-image-block-inner">
+                <div class="message-image-block-content">
+                  <a target="_blank" class="message-image" [title]="block?.altText" [href]="block?.imageUrl"
+                     rel="noopener noreferrer" [ngStyle]="{'background-image':'url('+block?.imageUrl+')'}">{{block?.imageUrl}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="block?.type === 'context' && block?.elements && block?.elements?.length > 0">
+      <div class="message-context-block">
+        <div *ngFor="let element of block.elements" class="message-context-block-element">
+          <ng-container *ngIf="element?.type === 'markdown' || element?.type === 'plainText'">
+            <ng-template [ngTemplateOutlet]="textRender"
+                         [ngTemplateOutletContext]="{ $implicit: element}"></ng-template>
+            <div class="message-context-block-text-spacing"></div>
+          </ng-container>
+          <ng-container *ngIf="element?.type === 'image'">
+            <div class="message-context-block-img" [ngStyle]="{'background-image':'url('+element?.imageUrl+')'}"></div>
+            <div class="message-context-block-img-spacing"></div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="block?.type === 'input'">
+      <div class="message-input-block">
+        <ng-container *ngIf="block?.element && block?.element?.type === 'datePicker'">
+          <mat-form-field>
+            <input [value]="block.element.initialDate" [readonly]="true" matInput [matDatepicker]="picker"
+                   [placeholder]="block.element?.placeholder ? block.element.placeholder?.text : ''">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint *ngIf="block?.hint">{{block.hint?.text}}</mat-hint>
+          </mat-form-field>
+        </ng-container>
+
+        <ng-container *ngIf="block?.element && block?.element?.type === 'plainTextInput'">
+          <mat-form-field>
+            <input *ngIf="!block.element?.multiline" matInput
+                   [placeholder]="block.element?.placeholder ? block.element.placeholder?.text : ''">
+            <textarea rows="5" *ngIf="block.element?.multiline" matInput
+                      [placeholder]="block.element?.placeholder ? block.element.placeholder?.text : ''"></textarea>
+            <mat-hint *ngIf="block?.hint">{{block.hint?.text}}</mat-hint>
+          </mat-form-field>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="block?.type === 'divider'">
+      <div class="message-divider-block"></div>
+    </ng-container>
+    <button *ngIf="editable" (click)="deleteBlock(block)" mat-icon-button color="warn"
+            class="message-block-delete-button">
+      <mat-icon style="font-size: 18px">close</mat-icon>
+    </button>
+  </div>
+
+  <ng-template #textRender let-text>
+    <ng-container *ngIf="text && text?.type === 'markdown'">
+      <span style="word-break: break-word" [innerHtml]="text.text | markdownIt"></span>
+    </ng-container>
+    <ng-container *ngIf="text && text?.type === 'plainText'">
+      <span style="word-break: break-word">{{text.text}}</span>
+    </ng-container>
+  </ng-template>
+
+</div>
