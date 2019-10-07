@@ -129,7 +129,7 @@ export class RichEditorComponent implements OnInit, AfterViewInit, ControlValueA
     if (this.codeMirrorEditor) {
       const totalLines = this.codeMirrorEditor.lineCount();
       this.codeMirrorEditor.autoFormatRange({line: 0, ch: 0}, {line: totalLines});
-      this.codeMirrorEditor.setOption('value', JSON.stringify(this.model, null, 2));
+      this.codeMirrorEditor.setOption('value', JSON.stringify(this.model, null, 4));
     }
   }
 
