@@ -5,6 +5,7 @@ import {ClipboardService} from 'ngx-clipboard';
 import {ConfirmService} from '../../share/confirm/confirm.service';
 import {TemplatesListComponent} from './templates-list/templates-list.component';
 import {MessageModalComponent} from '../../share/message-modal/message-modal.component';
+import {MarkdownEditorComponent} from '../../share/markdown-editor/markdown-editor.component';
 
 @Component({
   selector: 'app-block-kit-builder',
@@ -102,5 +103,15 @@ export class BlockKitBuilderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  openMarkdown() {
+    const dialogRef = this.dialog.open(MarkdownEditorComponent, {
+      width: '80vw',
+      height: '800px',
+      data: this.blockData,
+      disableClose: true
+    });
+
   }
 }

@@ -25,12 +25,14 @@
     "codemirror": "^5.49.0",
     "font-awesome": "^4.7.0",
     "markdown-it": "^9.0.1",
+    "markdown-it-emoji": "^1.4.0",
+    "ng-http-plus": "0.0.3",
     "ngx-clipboard": "^12.2.1",
     "rxjs": "~6.4.0",
+    "stream-plus": "0.0.2",
     "tslib": "^1.10.0",
-    "zone.js": "~0.9.1",
-    "ng-http-plus": "0.0.3",
-    "stream-plus": "0.0.2"
+    "tui-editor": "^1.4.7",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.3",

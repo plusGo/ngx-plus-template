@@ -42,7 +42,7 @@ export class MessageBlocksComponent implements OnInit {
     this.blockChange.emit([...this.blocks]);
   }
 
-  deleteBlock(block: Block) {
+  deleteBlock(block: Block ) {
     this.blocks = this.blocks.filter($block => $block !== block);
     this.blockChange.emit(this.blocks);
   }

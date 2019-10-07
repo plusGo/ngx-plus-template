@@ -4,7 +4,10 @@ export class MarkdownItUtil {
   private static md = new MarkdownIt({
     html: true,
     xhtmlOut: true,
-  });
+  })
+    .set({
+      breaks: true
+    });
 
   constructor() {
   }

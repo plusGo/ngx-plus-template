@@ -21,10 +21,11 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {RichEditorComponent} from './rich-editor/rich-editor.component';
 import {ClipboardModule} from 'ngx-clipboard';
 import {ConfirmComponent} from './confirm/confirm.component';
+import {MarkdownEditorComponent} from './markdown-editor/markdown-editor.component';
 
 
 @NgModule({
-  declarations: [MessageBlocksComponent, MarkdownItPipe, MessageModalComponent, RichEditorComponent, ConfirmComponent,
+  declarations: [MessageBlocksComponent, MarkdownItPipe, MessageModalComponent, RichEditorComponent, ConfirmComponent, MarkdownEditorComponent,
   ],
   imports: [
     CommonModule,
@@ -61,9 +62,10 @@ import {ConfirmComponent} from './confirm/confirm.component';
     MatInputModule,
     FormsModule,
     MessageModalComponent,
-    RichEditorComponent
+    RichEditorComponent,
+    MarkdownEditorComponent
   ],
-  entryComponents: [MessageModalComponent, ConfirmComponent]
+  entryComponents: [MessageModalComponent, ConfirmComponent, MarkdownEditorComponent]
 })
 export class ShareModule {
 }

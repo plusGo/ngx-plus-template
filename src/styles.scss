@@ -1,7 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "style/main";
-@import '~codemirror/lib/codemirror.css' ;
+@import '~codemirror/lib/codemirror.css';
+/*
+tastui
+*/
+@import '~tui-editor/dist/tui-editor.css';
+@import '~tui-editor/dist/tui-editor-contents.css';
+@import '~highlight.js/styles/github.css';
 
 body {
   width: 100%;
@@ -32,6 +38,7 @@ body {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
-.CodeMirror-scroll{
+
+.CodeMirror-scroll {
   background-color: #f8f8f8
 }
