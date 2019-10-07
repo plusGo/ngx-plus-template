@@ -146,5 +146,258 @@
         ]
       }
     ]
+  },
+  {
+    "name": "meeting-template",
+    "label": "会议通知模板",
+    "blocks": [
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "**您预订的会议室即将开始!** <br/><br/> 会议室:  **B505** <br/>会议时间:  **2019年9月17日 17:00 ~ 19:00**"
+        }
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": "请及时签到！若行程有变，请及时取消以便他人预订"
+          }
+        ]
+      },
+      {
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "style": "primary",
+            "text": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "签到"
+            }
+          },
+          {
+            "type": "button",
+            "text": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "取消此次会议"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "meeting-success",
+    "label": "会议签到成功",
+    "blocks": [
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "**会议签到成功！** <br/><br/> 会议室:  **B505** <br/>会议时间:  **2019年9月17日 17:00 ~ 19:00**"
+        }
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": "会议室使用完成后，请及时签退"
+          }
+        ]
+      },
+      {
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "style": "primary",
+            "text": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "签退"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "approve-template",
+    "label": "复杂审批模板",
+    "blocks": [
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "### 收到了一条审批信息，如下："
+        }
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": " 申请信息"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "**申请单号:** 1212121212121212122112<br/>**申请人员:** 流川枫<br/>**所属机构:** 第一高中<br/>**申请时间:** 2019年2月13日 15:00"
+        }
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": " **其他信息**"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "**申请标题:** 为了进一步提升其他星球的资源利用效率，因此需要申请此次项目，用于探索宇宙<br/>**探索类型:** 星际探索<br/>**支持机构:** 太阳系第一军队<br/>**申请时间:** 2019年2月13日 15:00"
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "申请金额 | 费用类型 | 剩余金额 | 最晚期限\n- | :-: | :-: | -:\n100000 | 营销费用 | 100 | 2019年10月29日| \n1010101 | 业务主管 | 1020 | 2019年10月3日| "
+        }
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": " 附件"
+          }
+        ]
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": "**宇宙星系地图.map**"
+          },
+          {
+            "type": "image",
+            "altText": "测试图片",
+            "imageUrl": "/assets/images/beagle.png",
+            "title": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "测试照片"
+            }
+          }
+        ]
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": "**宇宙星系地图.map**"
+          },
+          {
+            "type": "image",
+            "altText": "测试图片",
+            "imageUrl": "/assets/images/beagle.png",
+            "title": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "测试照片"
+            }
+          }
+        ]
+      },
+      {
+        "type": "divider"
+      },
+      {
+        "type": "context",
+        "elements": [
+          {
+            "emoji": false,
+            "type": "markdown",
+            "text": " 审批进度"
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "text": {
+          "emoji": false,
+          "type": "markdown",
+          "text": "张三 **2019-04-06- 15：00** **发起申请** <br/>李四 **2019-04-06- 15：00** **驳回申请**"
+        }
+      },
+      {
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "style": "primary",
+            "text": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "同意"
+            }
+          },
+          {
+            "type": "button",
+            "style": "warn",
+            "text": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "驳回"
+            }
+          },
+          {
+            "type": "button",
+            "text": {
+              "emoji": false,
+              "type": "plainText",
+              "text": "转发"
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

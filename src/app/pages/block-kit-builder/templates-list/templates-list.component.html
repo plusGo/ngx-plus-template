@@ -3,8 +3,8 @@
     <mat-icon>close</mat-icon>
   </button>
 </h1>
-<div style="display: flex;align-items: center;flex-direction: column" mat-dialog-content>
-  <div  *ngFor="let template of templates">
+<div style="display: flex;align-items: center;flex-direction: column;max-height: 78vh" mat-dialog-content>
+  <div *ngFor="let template of templates">
     <h2>{{template?.label}}</h2>
     <div class="template-box">
       <app-message-blocks [editable]="false" [blocks]="template?.blocks"></app-message-blocks>

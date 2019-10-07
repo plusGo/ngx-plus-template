@@ -37,8 +37,8 @@ export class MessageBlocksComponent implements OnInit {
     }
     const prev = this.blocks[event.previousIndex];
     const cur = this.blocks[event.currentIndex];
-    this.blocks[event.previousIndex] = cur;
-    this.blocks[event.currentIndex] = prev;
+    this.blocks.splice(event.previousIndex, 1);
+    this.blocks.splice(event.currentIndex, 0, prev);
     this.blockChange.emit([...this.blocks]);
   }
 
