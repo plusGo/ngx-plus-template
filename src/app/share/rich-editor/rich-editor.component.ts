@@ -132,5 +132,4 @@ export class RichEditorComponent implements OnInit, AfterViewInit, ControlValueA
       this.codeMirrorEditor.setOption('value', JSON.stringify(this.model, null, 4));
     }
   }
-
 }
